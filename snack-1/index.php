@@ -1,18 +1,15 @@
 <?php
-    // Quesry string for testing => ?name=Aldo&email=aldo@baglio.it&age=50;
+    // Query string for testing => ?name=Aldo&email=aldo@baglio.it&age=50;
 
     $name = empty($_GET["name"]) ? "" : trim($_GET["name"]) ;
     $email = empty($_GET["email"]) ? "" : trim($_GET["email"]);
     $age = empty($_GET["age"]) ? "" : trim($_GET["age"]) ;
-    $is_email_valid = false;
 
-    if(strpos($email, "@")){
-        $email_substr_arr = explode("@", $email);
-        $email_last_part = end($email_substr_arr);
-        $is_email_valid = strpos($email_last_part, ".");
-    }
+    $is_name_valid = strlen($name) > 3;
+    $is_email_valid = strpos(strrchr($email, "@"), ".");
+    $is_age_valid = is_numeric($age);
 
-    $is_access_successfull = strlen($name) > 3 && $is_email_valid && is_numeric($age);
+    $is_access_successfull = $is_name_valid && $is_email_valid && $is_age_valid;
     $message = $is_access_successfull ? "Accesso riuscito" : "Accesso negato";
 ?>
 
