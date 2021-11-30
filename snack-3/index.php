@@ -1,7 +1,7 @@
 <?php
 $random_nums_array = [];
 
-for($i = 0; $i < 15; $i++){
+while(count($random_nums_array) < 15){
     $number = rand(1, 100);
     if (!in_array($number, $random_nums_array)) {
         $random_nums_array[] = $number;
