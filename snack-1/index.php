@@ -6,7 +6,7 @@
     $age = empty($_GET["age"]) ? "" : trim($_GET["age"]) ;
 
     $is_name_valid = strlen($name) > 3;
-    $is_email_valid = strpos(strrchr($email, "@"), ".");
+    $is_email_valid = strpos(strrchr($email, "@"), ".") !== false;
     $is_age_valid = is_numeric($age);
 
     $is_access_successfull = $is_name_valid && $is_email_valid && $is_age_valid;
